@@ -11,6 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
+import {MatTableModule} from '@angular/material/table';
+
 
 import { AddFormComponent } from './add-form/add-form.component';
 import { AddressesListComponent } from './addresses-list/addresses-list.component';
@@ -37,6 +39,7 @@ const appRoutes: Routes = [
     MatInputModule,
     FormsModule,
     MatButtonModule,
+    MatTableModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
   ],

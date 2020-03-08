@@ -1,12 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AddressService} from '../shared/address.service';
-// import {Store, select} from '@ngrx/store';
-// import * as fromRoot from '../store/reducers';
-
-// import { AppState } from '../store/state/app.state';
-// import {MacAddressState} from "../store/state/macAddress.state";
-// import {GetMacAddress} from "../store/actions/macAddress.actions";
 
 
 @Component({
@@ -20,21 +14,17 @@ export class AddFormComponent implements OnInit {
   public address  = '';
   public macAddressForm: FormGroup;
 
-  // tslint:disable-next-line:variable-name
-  // constructor(private _store: Store<MacAddressState> ) { }
   constructor(private service: AddressService) {}
 
 
   ngOnInit(): void {
-    // this._store.dispatch(new GetMacAddress());
-
-    // console.log(this._store);
+    // this.service.pushAddress('44:38:39:ff:ef:57');
 
     this.macAddressForm = new FormGroup({
       address: new FormControl(this.address, [
-        Validators.pattern('[a-zA-Z ]*'),
+        Validators.pattern('^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$'),
         Validators.required,
-        Validators.minLength(3),
+        Validators.minLength(17),
         Validators.maxLength(17),
       ]),
     });
