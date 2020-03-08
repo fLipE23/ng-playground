@@ -1,0 +1,27 @@
+
+<h1>Add new MAC address</h1>
+
+<div *ngIf="mac_address.invalid">
+  <div *ngIf="mac_address.errors.minlength">
+    <small style="color: #a00;">must be a 17-characters string</small>
+  </div>
+
+  <div *ngIf="mac_address.errors.pattern">
+    <small style="color: #a00;">not valid MAC</small>
+  </div>
+<!-- ... -->
+</div>
+
+
+<form class="example-form" [formGroup]="macAddressForm">
+  <mat-form-field class="example-full-width">
+    <mat-label>Add MAC address</mat-label>
+    <input matInput [(ngModel)]="address" formControlName="address">
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="addMac()">Add</button>
+</form>
+
+
+<div style="margin-top: 2rem">
+  <a routerLink="/list">Show all addresses</a>
+</div>
