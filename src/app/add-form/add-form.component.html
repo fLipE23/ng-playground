@@ -2,11 +2,15 @@
 <h1>Add new MAC address</h1>
 
 <div *ngIf="mac_address.invalid">
-  <div *ngIf="mac_address.errors.minlength">
-    <small style="color: #a00;">must be a 17-characters string</small>
+  <div *ngIf="(mac_address.errors | firstKeyPipe)==='minlength' || (mac_address.errors | firstKeyPipe)==='maxlength' ">
+    <small style="color: #a00;">must be a 17-character string</small>
   </div>
 
-  <div *ngIf="mac_address.errors.pattern">
+  <div *ngIf="(mac_address.errors | firstKeyPipe)==='required' ">
+    <small style="color: #a00;">MAC address required</small>
+  </div>
+
+  <div *ngIf="(mac_address.errors | firstKeyPipe)==='pattern'">
     <small style="color: #a00;">not valid MAC</small>
   </div>
 <!-- ... -->
@@ -20,6 +24,10 @@
   </mat-form-field>
   <button mat-raised-button color="primary" (click)="addMac()">Add</button>
 </form>
+
+
+
+<app-address-table [macAddress]="macAddress" *ngIf="macAddress"></app-address-table>
 
 
 <div style="margin-top: 2rem">

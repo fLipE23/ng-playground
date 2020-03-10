@@ -26,8 +26,7 @@ export class AddressService
 
   private API_KEY = 'at_BULmXFODqtiqHIVJ6CERtQ11sBwzn';
 
-  private updateInfo(item: IMacAddress): IMacAddress
-  {
+  public updateInfo(item: IMacAddress): IMacAddress {
     this.http.get<IMacAddressResponse>('https://api.macaddress.io/v1?apiKey=' + this.API_KEY + '&output=json&search=' + item.address)
       .subscribe(res => {
         item.vendorDetails = res.vendorDetails;
@@ -38,20 +37,19 @@ export class AddressService
     return item;
   }
 
-  push(item: IMacAddress)
-  {
+  push(item: IMacAddress) {
     item = this.updateInfo(item);
     this.addresses.push(item);
   }
 
   // get info and push
-  pushAddress(addressString: string) {
-    // alert(address);
+  pushAddressString(addressString: string): IMacAddress {
     const address: IMacAddress = {
       address: addressString,
     };
+    this.push( this.updateInfo(address)  );
 
-    this.push( this.updateInfo(address) );
+    return address;
   }
 
   getAll(): IMacAddress[] {

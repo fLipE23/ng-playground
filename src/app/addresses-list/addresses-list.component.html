@@ -4,55 +4,8 @@
 </div>
 
 <div *ngFor="let address of addresses">
-  <h1>{{address.address}}</h1>
-
-  <h2 style="margin: 2rem 0 .5rem;">Vendor details</h2>
-  <table mat-table [dataSource]="getKeyValObjectsArr( address.vendorDetails )">
-    <ng-container matColumnDef="key">
-      <td mat-cell *matCellDef="let element"> {{element.key}}: </td>
-    </ng-container>
-
-    <ng-container matColumnDef="val">
-      <td mat-cell *matCellDef="let element"> {{element.val}} </td>
-    </ng-container>
-
-    <tr mat-row *matRowDef="let row; columns: ['key', 'val'];">
-  </table>
-
-  <h2 style="margin: 2rem 0 .5rem;">Block Details</h2>
-  <table mat-table [dataSource]="getKeyValObjectsArr( address.blockDetails )">
-
-    <ng-container matColumnDef="key">
-      <td mat-cell *matCellDef="let element"> {{element.key}}: </td>
-    </ng-container>
-
-    <ng-container matColumnDef="val">
-      <td mat-cell *matCellDef="let element"> {{element.val}} </td>
-    </ng-container>
-
-    <tr mat-row *matRowDef="let row; columns: ['key', 'val'];">
-  </table>
-
-  <h2 style="margin: 2rem 0 .5rem;">MAC Address Details</h2>
-
-  <table mat-table [dataSource]="getKeyValObjectsArr( address.macAddressDetails )">
-
-    <ng-container matColumnDef="key">
-      <td mat-cell *matCellDef="let element"> {{element.key}}: </td>
-    </ng-container>
-
-    <ng-container matColumnDef="val">
-      <td mat-cell *matCellDef="let element"> {{element.val}} </td>
-    </ng-container>
-
-    <tr mat-row *matRowDef="let row; columns: ['key', 'val'];">
-  </table>
-
-  <hr>
-
+  <app-address-table [macAddress]="address"></app-address-table>
 </div>
-
-
 
 
 <!--<table mat-table [dataSource]="addresses">-->

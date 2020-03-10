@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {NgModule, Pipe} from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 // import { StoreModule } from '@ngrx/store';
@@ -16,6 +16,9 @@ import {MatTableModule} from '@angular/material/table';
 
 import { AddFormComponent } from './add-form/add-form.component';
 import { AddressesListComponent } from './addresses-list/addresses-list.component';
+import { AddressTableComponent } from './address-table/address-table.component';
+import { PropertiesTableComponent } from './properties-table/properties-table.component';
+import { FirstKeyPipePipe } from './pipes/first-key-pipe.pipe';
 
 
 const appRoutes: Routes = [
@@ -24,12 +27,14 @@ const appRoutes: Routes = [
   // { path: '**', component: NotFoundComponent }
 ];
 
-
 @NgModule({
   declarations: [
     AppComponent,
     AddFormComponent,
-    AddressesListComponent
+    AddressesListComponent,
+    AddressTableComponent,
+    PropertiesTableComponent,
+    FirstKeyPipePipe
   ],
   imports: [
     BrowserModule,

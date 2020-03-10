@@ -1,18 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {AddressService} from '../shared/address.service';
+import {AddressService, IMacAddress} from '../shared/address.service';
+
 
 
 @Component({
   selector: 'app-add-form',
   templateUrl: './add-form.component.html',
-  styleUrls: ['./add-form.component.scss']
+  styleUrls: ['./add-form.component.scss'],
 })
-
 export class AddFormComponent implements OnInit {
 
   public address  = '';
   public macAddressForm: FormGroup;
+  public macAddress: IMacAddress = null;
 
   constructor(private service: AddressService) {}
 
@@ -35,10 +36,14 @@ export class AddFormComponent implements OnInit {
   addMac() {
     // console.log(this.macAddressForm);
     if (this.macAddressForm.valid) {
-      this.service.pushAddress(this.address);
+      this.macAddress = this.service.pushAddressString(this.address);
       this.macAddressForm.reset();
       // this.address = '';
     }
   }
 
 }
+
+
+
+

@@ -17,14 +17,6 @@ export class AddressesListComponent implements OnInit {
     this.addresses = this.service.getAll();
   }
 
-  getKeyValObjectsArr(props: object) {
-    let arr = [];
-    for (let prop in props) {
-      arr.push({key: prop, val: props[prop]});
-    }
-    return arr;
-  }
-
 
 }
 
